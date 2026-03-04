@@ -47,7 +47,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       env:
-        SECRET_KEY: test_secret_key
+        DJANGO_SECRET_KEY: test_secret_key
         POSTGRES_DBNAME: postgres
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
