@@ -23,9 +23,9 @@ jobs:
       postgres:
         image: postgres:17.6
         env:
-          POSTGRES_DB: fayeverse_test_db
+          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password123
         ports:
           - 5432:5432
 
@@ -47,9 +47,9 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       env:
-        POSTGRES_DB: fayeverse_test_db
+        POSTGRES_DBNAME: postgres
         POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: password123
+        POSTGRES_PASSWORD: postgres
         POSTGRES_HOST: localhost
         POSTGRES_PORT: 5432
       run: |
