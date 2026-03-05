@@ -4,9 +4,10 @@ export interface Book {
     description: string;
     pages: number;
     rating: number;
-    genre_id: string;
-    author_id: string;
-    created_at: string
+    genre_id: Genre;
+    author_id: User;
+    created_at: string,
+    cover_url: string
 }
 
 export interface User{
@@ -21,21 +22,21 @@ export interface User{
 }
 export interface ReadingProgress{
     progress_id: string;
-    user_id: string;
-    book_id: string;
+    user_id: User;
+    book_id: Book;
     last_chapter_read: number;
     last_read_at: string;
 }
 export interface Review{
     review_id: string;
-    user_id: string;
-    book_id: string;
+    user_id: User;
+    book_id: Book;
     rating:number;
     comment: string;
 }
 export interface Library{
     lirary_id: string;
-    user_id: string;
+    user_id: User;
     books_num: number;
 }
 export interface Genre{
