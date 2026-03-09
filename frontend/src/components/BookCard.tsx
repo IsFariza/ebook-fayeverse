@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { Card, Button, Typography, Space, Rate } from 'antd';
-import type { Book } from '../types';
+import type { Book } from '../types/book';
 
 const { Text, Title, Paragraph } = Typography;
 
@@ -34,8 +34,8 @@ export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
         title={<Title level={4} style={{ margin: 0 }}>{book.title}</Title>}
         description={
           <Space direction="vertical" size={0} style={{ width: '100%' }}>
-            <Text type="secondary">{book.genre_id.name}</Text>
-            <Rate disabled defaultValue={book.rating} style={{ fontSize: 14, color: '#3d2b1f'}} />
+            <Text type="secondary">{book.genre_name}</Text>
+            <Rate disabled defaultValue={book.average_rating} style={{ fontSize: 14, color: '#3d2b1f'}} />
             <Paragraph ellipsis={{ rows: 2 }} style={{ marginTop: 8 }}>
               {book.description}
             </Paragraph>
@@ -50,7 +50,7 @@ export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
             block 
             shape="round" 
             size="large"
-            onClick={() => navigate({ to: `/read/${book.book_id}` })}
+            onClick={() => navigate({ to: `/read/${book.id}` })}
           >
             Читать сейчас
           </Button>
