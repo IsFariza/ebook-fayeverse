@@ -1,5 +1,6 @@
 asgiref==3.11.1
 Django==6.0.2
+django-filter==25.1
 djangorestframework==3.16.1
 psycopg2==2.9.11
 python-dotenv==1.2.2
