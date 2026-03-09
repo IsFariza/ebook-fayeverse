@@ -11,9 +11,17 @@ export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   const navigate = useNavigate();
   const [imgSrc, setImgSrc] = useState(book.cover_url || FALLBACK_IMAGE);
 
+  const handleNavigate = () => {
+    navigate({
+      to: '/books/$bookId',
+      params: {bookId: book.id.toString()}
+    })
+  }
+
   return (
     <Card
       hoverable
+      onClick={handleNavigate}
       style={{ width: 300, borderRadius: '12px', overflow: 'hidden' }}
       cover={
         <div style={{ height: '400px', background: '#f0f2f5' }}>
@@ -50,7 +58,10 @@ export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
             block 
             shape="round" 
             size="large"
-            onClick={() => navigate({ to: `/read/${book.id}` })}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate({ to: `/read/${book.id}` })
+            }}
           >
             Читать сейчас
           </Button>
@@ -58,7 +69,10 @@ export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
             type="default" 
             block 
             shape="round"
-            onClick={() => navigate({ to: '/library' })}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate({ to: '/library' })
+            }}
           >
             Добавить в Библиотеку
           </Button>
