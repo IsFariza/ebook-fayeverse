@@ -1,13 +1,19 @@
 from rest_framework import generics, permissions, filters
 from .models import Book
+from users.models import User
 from .serializers import BookSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Avg
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 
 class BookListCreate(generics.ListCreateAPIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = []
+
     queryset = Book.objects.annotate(average_rating=Avg('review__rating')).all()
     serializer_class = BookSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
