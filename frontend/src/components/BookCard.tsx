@@ -62,7 +62,6 @@ export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
               e.stopPropagation();
               navigate({ to: `/read/${book.id}` })
             }}
-
           >
             Читать сейчас
           </Button>
