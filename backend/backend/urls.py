@@ -18,11 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),
     path('api/genres/', include('genre.urls')),
     path('api/reviews/', include('reviews.urls')),
     path('api/books/', include('book.urls')),
     path('api/libraries/', include('library.urls')),
-    path('api/reading-progresses', include('readingProgress.urls'))
+    path('api/reading-progresses/', include('readingProgress.urls'))
 ]
