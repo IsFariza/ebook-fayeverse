@@ -22,4 +22,9 @@ urlpatterns = [
     path('api/users/', include('users.urls')),
     path('api/genres/', include('genre.urls')),
     path('api/reviews/', include('reviews.urls')),
+
+    path('api/books/', include('book.urls')),
+    path('api/libraries/', include('library.urls')),
+    path('api/reading-progresses', include('readingProgress.urls'))
+
 ]
