@@ -2,13 +2,10 @@ import { useParams } from '@tanstack/react-router';
 import { Typography, Row, Col, Button, Space, Divider } from 'antd';
 import { BookCard } from '../components/BookCard';
 import type { Book } from '../types/book';
+import { ReviewSection } from '../components/RevewSection';
 
 const { Title, Paragraph, Text } = Typography;
-
-export const BookPage = () => {
-  const { bookId } = useParams({ from: '/books/$bookId' });
-
-  const book: Book = {
+const book: Book = {
     id: 1,
       title: 'Книга траляля',
       description: 'Супер крутая книга надо почитать',
@@ -22,7 +19,13 @@ export const BookPage = () => {
       genre_name: 'Fantasy'
   };
 
-  const similarBooks: Book[] = Array(5).fill(book).map((b, i) => ({ ...b, id: i + 100 }));
+const similarBooks: Book[] = Array(3).fill(book).map((b, i) => ({ ...b, id: i + 100 }));
+
+
+export const BookPage = () => {
+  const { bookId } = useParams({ from: '/books/$bookId' });
+
+  
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '40px 20px' }}>
@@ -67,6 +70,8 @@ export const BookPage = () => {
           </Space>
         </Col>
       </Row>
+<Divider style={{ margin: '60px 0' }} />
+      <ReviewSection bookId={bookId} /> 
 
       <Divider style={{ margin: '60px 0' }} />
 
